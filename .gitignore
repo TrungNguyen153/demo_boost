@@ -1,0 +1,4 @@
+﻿.cache
+build
+ReqwestClient/vendor/boost
+compile_commands.json
