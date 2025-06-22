@@ -41,6 +41,7 @@ struct Uri {
     std::string QueryString, Path, Protocol, Host, Porl, Error;
     static Uri parse(const std::string &uri);
     std::string target() const;
+    void pretty_print() const;
 };
 
 struct Response {

@@ -17,6 +17,7 @@ RequestClient::RequestClient() : ctx(ssl::context::tlsv12_client) {
     ctx.set_default_verify_paths();
     boost::certify::enable_native_https_server_verification(ctx);
 }
+
 RequestClient::~RequestClient() {}
 
 awaitable<Response>
@@ -421,6 +422,16 @@ Uri Uri::parse(const std::string &uri) {
 
 std::string Uri::target() const { return Path + QueryString; }
 
+void Uri::pretty_print() const {
+    printf("Uri Breakdown:\n");
+    printf("  Protocol: %s\n", Protocol.c_str());
+    printf("  Host: %s\n", Host.c_str());
+    printf("  Porl: %s\n",
+           Porl.c_str()); // Assuming 'Porl' is intended for port
+    printf("  Path: %s\n", Path.c_str());
+    printf("  QueryString: %s\n", QueryString.c_str());
+    printf("  Error: %s\n", Error.c_str());
+}
 std::string Response::body() const { return response.body(); }
 
 http::status Response::status() const { return response.result(); }
