@@ -1,7 +1,6 @@
 #include <SDKDDKVer.h>
 
 #include "boost/asio/awaitable.hpp"
-#include "boost/asio/co_spawn.hpp"
 #include "boost/asio/detached.hpp"
 #include "boost/asio/io_context.hpp"
 #include "boost/beast/http/field.hpp"
@@ -20,7 +19,7 @@ boost::asio::awaitable<void> main_coroutine() {
     //     {{http::field::content_type, "application/json"}});
 
     auto ret = co_await client.post(
-        "https://www.postb.in/1750496979675-5481042666360",
+        "https://www.postb.in/1750865969522-5679690015967",
         R"({"name": "John Doe", "age": 30, "city": "New York"})",
         {{http::field::content_type, "application/json"}});
 
@@ -34,7 +33,7 @@ int main(int argc, char *argv[]) {
     boost::asio::co_spawn(ctx, main_coroutine(), boost::asio::detached);
 
     ctx.run();
-    std::getchar();
+    // std::getchar();
     //
     return 0;
 }
